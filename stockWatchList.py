@@ -1,11 +1,11 @@
 stockWatchList = [{
     "Apple": {
        "Ticker" : "AAPL",
-       "Target Price": 150
+       "Target Price": 150.00
     },
     "Microsoft": {
        "Ticker" : "MSFT",
-       "Target Price": 320
+       "Target Price": 320.00
     }
 
 }]

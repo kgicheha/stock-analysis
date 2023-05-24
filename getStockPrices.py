@@ -70,12 +70,15 @@ def stockResultsCompile(stockName, currentPrice, targetPrice, beta, peRatio, div
     else:
         indicator = "Buy Now"
 
-    stockFinancialResults.append({"Stock Name": stockName, "Beta": beta,
+    stockFinancialResults.append({"Stock Name": stockName,
+                                  "Beta": beta,
                                   "PE Ratio": peRatio,
-                                 "Dividend Yield": dividendYield,
+                                  "Dividend Yield": dividendYield,
                                   "Current Price": currentPrice,
                                   "1y Target Estimate": yearEstimatePrice,
-                                  "Personal Target Price": targetPrice, "Price Difference": priceDifference, "Wait/Buy Now": indicator})
+                                  "Target Entry Price": targetPrice,
+                                  "Price Difference": priceDifference,
+                                  "Wait/Buy Now": indicator})
     createCsvFile()
 
 # gets information from stockFinancialResults array to create csv file
@@ -84,9 +87,10 @@ def stockResultsCompile(stockName, currentPrice, targetPrice, beta, peRatio, div
 def createCsvFile():
 
     with open('stock_information.csv', mode='w', newline='', encoding="utf-8-sig") as csvfile:
-        fieldnames = ['Stock Name', 'Beta', 'PE Ratio', 'Dividend Yield', 'Current Price', '1y Target Estimate'
-                      'Personal Target Price', 'Price Difference', 'Wait/Buy Now']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        fieldnames = ['Stock Name', 'Beta', 'PE Ratio', 'Dividend Yield', 'Current Price', '1y Target Estimate',
+                      'Target Entry Price', 'Price Difference', 'Wait/Buy Now']
+        writer = csv.DictWriter(
+            csvfile, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()
 
         for stock in stockFinancialResults:
@@ -94,5 +98,5 @@ def createCsvFile():
 
 
 stocksInWatchList()
-print(stockFinancialResults)
+# print(stockFinancialResults)
 print("File has been successfully updated!")
