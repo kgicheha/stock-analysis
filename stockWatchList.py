@@ -5,7 +5,7 @@ stockWatchList = [{
     },
     "Microsoft": {
        "Ticker" : "MSFT",
-       "Target Price": 300
-    },
+       "Target Price": 320
+    }
 
 }]
