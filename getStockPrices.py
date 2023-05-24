@@ -6,48 +6,93 @@ from termcolor import colored
 
 stockFinancialResults = []
 
-    # loops through watchlist and passes in stock to getSymbol function
+# loops through watchlist and passes in stock to getSymbol function
+
+
 def stocksInWatchList():
     for stock in stockWatchList:
-        getStockSymbol(stock)
+        getStockInformation(stock)
 
-    # gets stocks symbol from watchList array
-def getStockSymbol(stock):
-    for key,value in stock.items():
-        priceRequest(key, value['Ticker'], value['Target Price'] )
+# gets stocks symbol from watchList array
 
-    # web scrap from yahoo to get prices
-def priceRequest(stockName, ticker, targetPrice):
 
-    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'}
+def getStockInformation(stock):
+    for key, value in stock.items():
+        stockInfoRequest(key, value['Ticker'], value['Target Price'])
+
+# web scrap from yahoo to get prices
+
+
+def stockInfoRequest(stockName, ticker, targetPrice):
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'}
     url = f'https://finance.yahoo.com/quote/{ticker}'
     response = requests.get(url, headers=headers)
 
     soup = BeautifulSoup(response.text, 'html.parser')
-    price = soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})["value"]
+    currentPrice = soup.find(
+        'fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})["value"]
 
     # print(f"Current Stock Price for {stockName} is {price}")
 
-    priceDifferenceCalculator(stockName, price, targetPrice)
+    # table = soup.find('table', {'class' : "W(100%) M(0) Bdcl(c)"})
+    # stockSummary = soup.find_all('td', {'class': "Ta(end) Fw(600) Lh(14px)"})
 
-# create function to see how far the stock price is from the target price
-def priceDifferenceCalculator(stockName, price, targetPrice):
+    beta = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
+                     'data-test': "BETA_5Y-value"}).get_text(strip=True)
+    peRatio = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
+                        'data-test': "PE_RATIO-value"}).get_text(strip=True)
+    dividendYield = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
+                              'data-test': "DIVIDEND_AND_YIELD-value"}).get_text(strip=True)
+    yearEstimatePrice = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
+                                  'data-test': "ONE_YEAR_TARGET_PRICE-value"}).get_text(strip=True)
+    marketCap = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
+                          'data-test': "MARKET_CAP-value"}).get_text(strip=True)
+    # print(beta)
+    # print(peRatio)
+    # print(dividendYield)
+    # print(yearEstimatePrice)
+    # print(marketCap)
 
-    priceDifference = round(float(price) - targetPrice, 2)
+    stockResultsCompile(stockName, currentPrice, targetPrice,
+                        beta, peRatio, dividendYield, yearEstimatePrice, marketCap)
 
-    stockFinancialResults.append({"Stock Name": stockName, "Current Price": price, "Target Price": targetPrice, "Price Difference" : priceDifference})
+#  function appends stock information to a results array
+
+
+def stockResultsCompile(stockName, currentPrice, targetPrice, beta, peRatio, dividendYield, yearEstimatePrice, marketCap):
+
+    priceDifference = round(float(currentPrice) - targetPrice, 2)
+
+    if priceDifference > 0:
+        indicator = "Wait To Buy"
+    else:
+        indicator = "Buy Now"
+
+    stockFinancialResults.append({"Stock Name": stockName, "Beta": beta,
+                                  "PE Ratio": peRatio,
+                                 "Dividend Yield": dividendYield,
+                                  "Current Price": currentPrice,
+                                  "1y Target Estimate": yearEstimatePrice,
+                                  "Personal Target Price": targetPrice, "Price Difference": priceDifference, "Wait/Buy Now": indicator})
     createCsvFile()
 
-    # gets information from stockFinancialResults array to create csv file
+# gets information from stockFinancialResults array to create csv file
+
+
 def createCsvFile():
 
-    with open('stock_information.csv', mode ='w', newline='', encoding="utf-8-sig") as csvfile:
-        fieldnames = ['Stock Name', 'Current Price', 'Target Price', 'Price Difference']
+    with open('stock_information.csv', mode='w', newline='', encoding="utf-8-sig") as csvfile:
+        fieldnames = ['Stock Name', 'Beta', 'PE Ratio', 'Dividend Yield', 'Current Price', '1y Target Estimate'
+                      'Personal Target Price', 'Price Difference', 'Wait/Buy Now']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
 
         for stock in stockFinancialResults:
             writer.writerow(stock)
 
+
 stocksInWatchList()
-# print(stockFinancialResults)
+print(stockFinancialResults)
+print("File has been successfully updated!")
