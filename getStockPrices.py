@@ -28,22 +28,22 @@ def priceRequest(stockName, ticker, targetPrice):
     print(f"Current Stock Price for {stockName} is {price}")
 
     priceDifferenceCalculator(stockName, price, targetPrice)
-    # createCsvFile(stockName, price)
 
 # create function to see how far the stock price is from the target price
 def priceDifferenceCalculator(stockName, price, targetPrice):
     priceDifference = round(float(price) - targetPrice, 2)
     stockFinancialResults.append({"Stock Name": stockName, "Current Price": price, "Target Price": targetPrice, "Price Difference" : priceDifference})
-
+    createCsvFile()
 
     # gets information from stockFinancialResults array to create csv file
-    # create csv file for the stocks
-def createCsvFile(stockName, price):
-    with open('stock_information.csv', mode ='w', newline='') as csvfile:
-        fieldnames = ['Stock Name', 'Current Price']
+def createCsvFile():
+    with open('stock_information.csv', mode ='w', newline='', encoding="utf-8-sig") as csvfile:
+        fieldnames = ['Stock Name', 'Current Price', 'Target Price', 'Price Difference']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        # writer.writeheader()
-        writer.writerows([stockName, price])
+
+        writer.writeheader()
+        for stock in stockFinancialResults:
+            writer.writerow(stock)
 
 stocksInWatchList()
-print(stockFinancialResults)
+# print(stockFinancialResults)
