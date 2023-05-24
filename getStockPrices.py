@@ -7,19 +7,33 @@ stockWatchList = [{
        "Ticker" : "APPL",
        "Target Price": 150
     },
+    "Microsoft": {
+       "Ticker" : "MSFT",
+       "Target Price": 300
+    },
 
 }]
 
-for stock in stockWatchList:
-    print(stock["Ticker"])
+# loop through each item in the stock list object
+#   pass in the ticker to the url
+    # return the price of each item
 
-headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'}
-url = 'https://finance.yahoo.com/quote/AAPL'
-response = requests.get(url, headers=headers)
-# print(response.status_code)
+def stocksInWatchList():
+    for stock in stockWatchList:
+        stockSymbol(stock)
 
-soup = BeautifulSoup(response.text, 'html.parser')
-price = soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})["value"]
+def stockSymbol(stock):
+    print(stock)
 
-print(price)
+stocksInWatchList()
+
+# headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'}
+# url = 'https://finance.yahoo.com/quote/AAPL'
+# response = requests.get(url, headers=headers)
+# # print(response.status_code)
+
+# soup = BeautifulSoup(response.text, 'html.parser')
+# price = soup.find('fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})["value"]
+
+# print(price)
 
