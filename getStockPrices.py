@@ -27,6 +27,7 @@ def stockInfoRequest(stockName, ticker, targetPrice):
     response = requests.get(url, headers=headers)
 
     soup = BeautifulSoup(response.text, 'html.parser')
+
     currentPrice = soup.find(
         'fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})["value"]
     beta = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
