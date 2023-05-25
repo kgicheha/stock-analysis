@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 from stockWatchList import stockWatchList
-from termcolor import colored
 from datetime import date
 
 stockFinancialResults = []
@@ -67,21 +66,18 @@ def stockResultsCompile(stockName, currentPrice, targetPrice, beta, peRatio, div
     createCsvFile()
 
 
-
 # gets information from stockFinancialResults array to create csv file
 def createCsvFile():
 
-    with open('stock_information.csv', mode='w', newline='', encoding="utf-8-sig") as csvfile:
+    today = str(date.today())
+    fileNameFormat = "stock-watchlist-" + today + ".csv"
+
+    with open(f'{fileNameFormat}', mode='w', newline='', encoding="utf-8-sig") as csvfile:
         fieldnames = ['Stock Name', 'Beta', 'PE Ratio', 'Dividend Yield', 'Current Price', '1y Target Estimate',
                       'Target Entry Price', 'Price Difference', 'Wait/Buy Now']
         writer = csv.DictWriter(
             csvfile, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()
-
-        # prints out current date
-        today = date.today()
-        dateFormat  = f'Today Date {today}'
-        writer.writerow(dateFormat)
 
         # prints out the data from the stock Financial Results
         for stock in stockFinancialResults:
@@ -90,7 +86,7 @@ def createCsvFile():
 
 stocksInWatchList()
 # print(stockFinancialResults)
-print("File has been successfully updated!")
+print("File has been successfully created!")
 
 
 # ADD CURRENT DATE AND TIME TO CSV FILE
