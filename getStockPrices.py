@@ -40,12 +40,12 @@ def stockInfoRequest(stockName, ticker, targetPrice):
     marketCap = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
                           'data-test': "MARKET_CAP-value"}).get_text(strip=True)
 
-    stockResultsCompile(stockName, currentPrice, targetPrice,
+    stockResultsCompile(stockName, ticker, currentPrice, targetPrice,
                         beta, peRatio, dividendYield, yearEstimatePrice, marketCap)
 
 
 #  function appends stock information to a results array
-def stockResultsCompile(stockName, currentPrice, targetPrice, beta, peRatio, dividendYield, yearEstimatePrice, marketCap):
+def stockResultsCompile(stockName, ticker, currentPrice, targetPrice, beta, peRatio, dividendYield, yearEstimatePrice, marketCap):
 
     priceDifference = round(float(currentPrice) - targetPrice, 2)
 
@@ -55,6 +55,7 @@ def stockResultsCompile(stockName, currentPrice, targetPrice, beta, peRatio, div
         indicator = "Buy Now"
 
     stockFinancialResults.append({"Stock Name": stockName,
+                                  "Ticker": ticker,
                                   "Beta": beta,
                                   "PE Ratio": peRatio,
                                   "Dividend Yield": dividendYield,
@@ -73,7 +74,7 @@ def createCsvFile():
     fileNameFormat = "stock-watchlist-" + today + ".csv"
 
     with open(f'{fileNameFormat}', mode='w', newline='', encoding="utf-8-sig") as csvfile:
-        fieldnames = ['Stock Name', 'Beta', 'PE Ratio', 'Dividend Yield', 'Current Price', '1y Target Estimate',
+        fieldnames = ['Stock Name', 'Ticker', 'Beta', 'PE Ratio', 'Dividend Yield', 'Current Price', '1y Target Estimate',
                       'Target Entry Price', 'Price Difference', 'Wait/Buy Now']
         writer = csv.DictWriter(
             csvfile, fieldnames=fieldnames, extrasaction='ignore')
