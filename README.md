@@ -10,7 +10,7 @@ Project Description:
 
 
 Issue This Project Helps To Solve:
-    Rather than researching each stock at a time to see whether the stock price has reached your desired price to buy in. This script helps you to automate that.
+    Rather than researching each stock at a time to see whether the stock price has reached your desired buy in price. This script helps you to automate that.
 
 How To Run The Script:
 
@@ -43,6 +43,6 @@ Python libraries used for this project
 
 **Disclaimer**:
     Please do your own research and consult with a financial advisor before making any investment.
-    This is only a personal project and should only be used for
+    This is only a personal project that I'm using the learn about webscraping
 
 
