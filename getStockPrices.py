@@ -3,26 +3,23 @@ from bs4 import BeautifulSoup
 import csv
 from stockWatchList import stockWatchList
 from termcolor import colored
+from datetime import date
 
 stockFinancialResults = []
 
 # loops through watchlist and passes in stock to getSymbol function
-
-
 def stocksInWatchList():
     for stock in stockWatchList:
         getStockInformation(stock)
 
+
 # gets stocks symbol from watchList array
-
-
 def getStockInformation(stock):
     for key, value in stock.items():
         stockInfoRequest(key, value['Ticker'], value['Target Price'])
 
+
 # web scrap from yahoo to get prices
-
-
 def stockInfoRequest(stockName, ticker, targetPrice):
 
     headers = {
@@ -33,12 +30,6 @@ def stockInfoRequest(stockName, ticker, targetPrice):
     soup = BeautifulSoup(response.text, 'html.parser')
     currentPrice = soup.find(
         'fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})["value"]
-
-    # print(f"Current Stock Price for {stockName} is {price}")
-
-    # table = soup.find('table', {'class' : "W(100%) M(0) Bdcl(c)"})
-    # stockSummary = soup.find_all('td', {'class': "Ta(end) Fw(600) Lh(14px)"})
-
     beta = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
                      'data-test': "BETA_5Y-value"}).get_text(strip=True)
     peRatio = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
@@ -49,18 +40,12 @@ def stockInfoRequest(stockName, ticker, targetPrice):
                                   'data-test': "ONE_YEAR_TARGET_PRICE-value"}).get_text(strip=True)
     marketCap = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
                           'data-test': "MARKET_CAP-value"}).get_text(strip=True)
-    # print(beta)
-    # print(peRatio)
-    # print(dividendYield)
-    # print(yearEstimatePrice)
-    # print(marketCap)
 
     stockResultsCompile(stockName, currentPrice, targetPrice,
                         beta, peRatio, dividendYield, yearEstimatePrice, marketCap)
 
+
 #  function appends stock information to a results array
-
-
 def stockResultsCompile(stockName, currentPrice, targetPrice, beta, peRatio, dividendYield, yearEstimatePrice, marketCap):
 
     priceDifference = round(float(currentPrice) - targetPrice, 2)
@@ -81,9 +66,9 @@ def stockResultsCompile(stockName, currentPrice, targetPrice, beta, peRatio, div
                                   "Wait/Buy Now": indicator})
     createCsvFile()
 
+
+
 # gets information from stockFinancialResults array to create csv file
-
-
 def createCsvFile():
 
     with open('stock_information.csv', mode='w', newline='', encoding="utf-8-sig") as csvfile:
@@ -93,6 +78,12 @@ def createCsvFile():
             csvfile, fieldnames=fieldnames, extrasaction='ignore')
         writer.writeheader()
 
+        # prints out current date
+        today = date.today()
+        dateFormat  = f'Today Date {today}'
+        writer.writerow(dateFormat)
+
+        # prints out the data from the stock Financial Results
         for stock in stockFinancialResults:
             writer.writerow(stock)
 
@@ -100,3 +91,6 @@ def createCsvFile():
 stocksInWatchList()
 # print(stockFinancialResults)
 print("File has been successfully updated!")
+
+
+# ADD CURRENT DATE AND TIME TO CSV FILE
