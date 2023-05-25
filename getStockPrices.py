@@ -47,7 +47,10 @@ def stockInfoRequest(stockName, ticker, targetPrice):
 #  function appends stock information to a results array
 def stockResultsCompile(stockName, ticker, currentPrice, targetPrice, beta, peRatio, dividendYield, yearEstimatePrice, marketCap):
 
-    priceDifference = round(float(currentPrice) - targetPrice, 2)
+    currentPrice = round(float(currentPrice),2)
+    targetPrice = round(targetPrice, 2)
+
+    priceDifference = round(currentPrice - targetPrice, 2)
 
     if priceDifference > 0:
         indicator = "Wait To Buy"
@@ -59,8 +62,8 @@ def stockResultsCompile(stockName, ticker, currentPrice, targetPrice, beta, peRa
                                   "Beta": beta,
                                   "PE Ratio": peRatio,
                                   "Dividend Yield": dividendYield,
-                                  "Current Price": currentPrice,
                                   "1y Target Estimate": yearEstimatePrice,
+                                  "Current Price": currentPrice,
                                   "Target Entry Price": targetPrice,
                                   "Price Difference": priceDifference,
                                   "Wait/Buy Now": indicator})
@@ -74,7 +77,7 @@ def createCsvFile():
     fileNameFormat = "stock-watchlist-" + today + ".csv"
 
     with open(f'{fileNameFormat}', mode='w', newline='', encoding="utf-8-sig") as csvfile:
-        fieldnames = ['Stock Name', 'Ticker', 'Beta', 'PE Ratio', 'Dividend Yield', 'Current Price', '1y Target Estimate',
+        fieldnames = ['Stock Name', 'Ticker', 'Beta', 'PE Ratio', 'Dividend Yield', '1y Target Estimate', 'Current Price',
                       'Target Entry Price', 'Price Difference', 'Wait/Buy Now']
         writer = csv.DictWriter(
             csvfile, fieldnames=fieldnames, extrasaction='ignore')

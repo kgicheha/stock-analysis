@@ -1,5 +1,5 @@
-﻿Stock Name,Ticker,Beta,PE Ratio,Dividend Yield,Current Price,1y Target Estimate,Target Entry Price,Price Difference,Wait/Buy Now
-Apple,AAPL,1.30,29.51,0.96 (0.56%),173.835,178.88,150.0,23.84,Wait To Buy
-Microsoft,MSFT,0.93,35.34,2.72 (0.87%),326.23,332.93,320.0,6.23,Wait To Buy
-"Amazon.com,Inc",AMZN,1.26,273.41,N/A (N/A),114.8311,134.07,100.0,14.83,Wait To Buy
-Alphabet Inc.,GOOG,1.10,27.10,N/A (N/A),124.41,129.44,115.0,9.41,Wait To Buy
+﻿Stock Name,Ticker,Beta,PE Ratio,Dividend Yield,1y Target Estimate,Current Price,Target Entry Price,Price Difference,Wait/Buy Now
+Apple,AAPL,1.30,29.44,0.96 (0.56%),178.88,173.43,150.0,23.43,Wait To Buy
+Microsoft,MSFT,0.93,35.26,2.72 (0.87%),332.93,325.46,320.0,5.46,Wait To Buy
+"Amazon.com,Inc",AMZN,1.26,273.05,N/A (N/A),134.07,114.68,100.0,14.68,Wait To Buy
+Alphabet Inc.,GOOG,1.10,27.00,N/A (N/A),129.44,123.91,115.0,8.91,Wait To Buy
