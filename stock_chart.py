@@ -14,13 +14,12 @@ def fetchData(ticker):
 
     stock_history = current_stock.history(period="max")
 
-
     stock_close = stock_history["Close"]
     stock_volume = stock_history["Volume"]
     stock_index = stock_history.index
-    print(stock_index)
 
     createChart(stock_close, symbol, currency, stock_index, stock_volume)
+
 
 def createChart(stock_close, symbol, currency, stock_index, stock_volume):
     # Create a figure with multiple subplots
@@ -33,7 +32,6 @@ def createChart(stock_close, symbol, currency, stock_index, stock_volume):
     ax1.grid(True)
     ax1.legend()
 
-
     # Plot the stock volume chart
     ax2.fill_between(stock_index, stock_volume, color="gray", alpha=0.6)
     ax2.set_title(f"{symbol} Stock Volume")
@@ -41,9 +39,10 @@ def createChart(stock_close, symbol, currency, stock_index, stock_volume):
     ax2.set_ylabel("Volume")
     ax2.grid(True)
 
-    #displays chart
+    # displays chart
     plt.tight_layout()
     plt.show()
+
 
 user_input = input("Enter stock ticker: ")
 fetchData(user_input)
