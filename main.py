@@ -41,6 +41,8 @@ def stockInfoRequest(stockName, ticker, targetPrice):
 
     beta = round(current_stock_info["beta"], 2)
     pe_ratio = round(current_stock_info["trailingPE"], 2)
+    eps = round(current_stock_info["trailingEps"],2)
+    earnings_quarterly_growth = round((current_stock_info["earningsQuarterlyGrowth"]) * 100,2)
 
     market_cap = current_stock_info["marketCap"]
     # formats market cap
@@ -60,7 +62,7 @@ def stockInfoRequest(stockName, ticker, targetPrice):
 
     stockResultsCompile(stock_name, symbol, sector, currency, open_price,
                         current_price, previous_close_price, volume, div_rate, div_yield,
-                        formatted_div_date, beta, pe_ratio, formatted_market_cap,
+                        formatted_div_date, beta, pe_ratio, eps, earnings_quarterly_growth, formatted_market_cap,
                         fifty_two_week_low, fifty_two_week_high, year_target_price_est, highest_hist_price
                         )
 
@@ -68,7 +70,7 @@ def stockInfoRequest(stockName, ticker, targetPrice):
 #  function appends stock information to a results array
 def stockResultsCompile(stock_name, symbol, sector, currency, open_price,
                         current_price, previous_close_price, volume, div_rate, div_yield,
-                        formatted_div_date, beta, pe_ratio, formatted_market_cap,
+                        formatted_div_date, beta, pe_ratio, eps, earnings_quarterly_growth, formatted_market_cap,
                         fifty_two_week_low, fifty_two_week_high, year_target_price_est, highest_hist_price):
 
 
@@ -90,18 +92,20 @@ def stockResultsCompile(stock_name, symbol, sector, currency, open_price,
                                   "Symbol": symbol,
                                   "Sector": sector,
                                   "Currency":currency ,
-                                  "Open Price":open_price,
                                   "Current Price":current_price,
                                   "Previous Close Price":previous_close_price,
+                                  "Open Price":open_price,
+                                  "52 Week Low": fifty_two_week_low,
+                                  "52 Week High": fifty_two_week_high,
                                   "Volume": volume,
+                                  "Market Cap": formatted_market_cap,
+                                  "Beta": beta,
+                                  "PE Ratio": pe_ratio,
+                                  "EPS": eps,
                                   "Dividend Rate": div_rate,
                                   "Dividend Yield": div_yield,
                                   "Divididend Date":formatted_div_date,
-                                  "Beta": beta,
-                                  "PE Ratio": pe_ratio,
-                                  "Market Cap": market_cap,
-                                  "52 Week Low": fifty_two_week_low,
-                                  "52 Week High": fifty_two_week_high,
+                                  "Earnings Quarterly Growth(%)": earnings_quarterly_growth,
                                   "1y Target Estimate": year_target_price_est,
                                   "Suggested Entry Price": suggested_entry_price,
                                   "Price Difference": price_difference,
@@ -116,7 +120,9 @@ def createCsvFile():
     fileNameFormat = "stock-watchlist-" + today + ".csv"
 
     with open(f'{fileNameFormat}', mode='w', newline='', encoding="utf-8-sig") as csvfile:
-        fieldnames = ['Stock Name', 'Ticker', 'Beta', 'PE Ratio', 'Dividend Yield', '1y Target Estimate', 'Current Price',
+        fieldnames = ['Stock Name', 'Symbol', "Sector", "Currency", "Open Price",
+
+        'Beta', 'PE Ratio', 'Dividend Yield', '1y Target Estimate', 'Current Price',
                       'Target Entry Price', 'Price Difference', 'Wait/Buy Now']
         writer = csv.DictWriter(
             csvfile, fieldnames=fieldnames, extrasaction='ignore')
