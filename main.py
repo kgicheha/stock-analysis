@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
-from stockWatchList import stockWatchList
+from stockList import stockList
 from datetime import date
 
 stockFinancialResults = []
