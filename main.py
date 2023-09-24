@@ -52,7 +52,7 @@ def stockInfoRequest(stockName, ticker, targetPrice):
 
     fifty_two_week_low = current_stock_info["fiftyTwoWeekLow"]
     fifty_two_week_high = current_stock_info["fiftyTwoWeekHigh"]
-    target_price = current_stock_info["targetMeanPrice"]
+    year_target_price_est = current_stock_info["targetMeanPrice"]
 
     stock_history = current_stock.history(period="max")
     highest_hist_price = round(max(stock_history["High"]), 2)
@@ -61,7 +61,7 @@ def stockInfoRequest(stockName, ticker, targetPrice):
     stockResultsCompile(stock_name, symbol, sector, currency, open_price,
                         current_price, previous_close_price, volume, div_rate, div_yield,
                         formatted_div_date, beta, pe_ratio, formatted_market_cap,
-                        fifty_two_week_low, fifty_two_week_high, target_price, highest_hist_price
+                        fifty_two_week_low, fifty_two_week_high, year_target_price_est, highest_hist_price
                         )
 
 
@@ -69,32 +69,43 @@ def stockInfoRequest(stockName, ticker, targetPrice):
 def stockResultsCompile(stock_name, symbol, sector, currency, open_price,
                         current_price, previous_close_price, volume, div_rate, div_yield,
                         formatted_div_date, beta, pe_ratio, formatted_market_cap,
-                        fifty_two_week_low, fifty_two_week_high, target_price, highest_hist_price):
+                        fifty_two_week_low, fifty_two_week_high, year_target_price_est, highest_hist_price):
 
 
-    print("Higest_price", highest_hist_price)
-    print("Current_price", current_price)
-    entry_price = round(.75 * highest_hist_price,2)
-    print("Entry Price", entry_price)
+    price_difference = round(highest_hist_price - current_price,2)
 
+    # look into buying the stock when it drops below entry price
+    suggested_entry_price = round(.75 * highest_hist_price,2)
+    print("Entry Price", suggested_entry_price)
 
-    if current_price > entry_price:
+    # indicate whether to buy or wait
+    if current_price > suggested_entry_price:
         indicator = "Wait To Buy"
     else:
         indicator = "Buy Now"
 
     print("Indicator", indicator)
 
-    # stockFinancialResults.append({"Stock Name": stockName,
-    #                               "Ticker": ticker,
-    #                               "Beta": beta,
-    #                               "PE Ratio": peRatio,
-    #                               "Dividend Yield": dividendYield,
-    #                               "1y Target Estimate": yearEstimatePrice,
-    #                               "Current Price": currentPrice,
-    #                               "Target Entry Price": targetPrice,
-    #                               "Price Difference": priceDifference,
-    #                               "Wait/Buy Now": indicator})
+    stockFinancialResults.append({"Stock Name": stock_name,
+                                  "Symbol": symbol,
+                                  "Sector": sector,
+                                  "Currency":currency ,
+                                  "Open Price":open_price,
+                                  "Current Price":current_price,
+                                  "Previous Close Price":previous_close_price,
+                                  "Volume": volume,
+                                  "Dividend Rate": div_rate,
+                                  "Dividend Yield": div_yield,
+                                  "Divididend Date":formatted_div_date,
+                                  "Beta": beta,
+                                  "PE Ratio": pe_ratio,
+                                  "Market Cap": market_cap,
+                                  "52 Week Low": fifty_two_week_low,
+                                  "52 Week High": fifty_two_week_high,
+                                  "1y Target Estimate": year_target_price_est,
+                                  "Suggested Entry Price": suggested_entry_price,
+                                  "Price Difference": price_difference,
+                                  "Wait/Buy Now": indicator})
     # createCsvFile()
 
 
