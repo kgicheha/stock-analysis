@@ -145,7 +145,7 @@ def stockResultsCompile(stock_name, symbol, sector, currency, open_price,
 def createCsvFile():
 
     today = str(date.today())
-    fileNameFormat = "stock-watchlist-" + today + ".csv"
+    fileNameFormat = "stock-analysis-" + today + ".csv"
 
     with open(f'{fileNameFormat}', mode='w', newline='', encoding="utf-8-sig") as csvfile:
         fieldnames = ['Stock Name', 'Symbol', "Sector", "Currency", "Current Price",
