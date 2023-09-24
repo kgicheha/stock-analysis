@@ -8,20 +8,14 @@ stockFinancialResults = []
 
 # loops through watchlist and passes in stock to getSymbol function
 
-
+# gets data from stockList.py file
 def stocksInList():
-    for stock in stockList:
-        getStockInformation(stock)
-
-
-# gets stocks symbol from watchList array
-def getStockInformation(stock):
-    for key, value in stock.items():
-        stockInfoRequest(key, value['Ticker'])
+    for symbol in stockList:
+        stockInfoRequest(symbol)
 
 
 # fetches data from yahoo finance
-def stockInfoRequest(stockName, ticker):
+def stockInfoRequest(ticker):
     current_stock = yf.Ticker(ticker)
     current_stock_info = current_stock.info
 
