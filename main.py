@@ -39,6 +39,7 @@ def stockInfoRequest(ticker):
     current_price = current_stock_info["currentPrice"]
     previous_close_price = current_stock_info["previousClose"]
     volume = current_stock_info["volume"]
+    formatted_volume = f"{volume:,}"
 
     # gets dividend rate
     try:
@@ -99,7 +100,7 @@ def stockInfoRequest(ticker):
         indicator = "Buy Now"
 
     stockResultsCompile(stock_name, symbol, sector, currency, open_price,
-                        current_price, previous_close_price, volume, div_rate, div_yield,
+                        current_price, previous_close_price, formatted_volume, div_rate, div_yield,
                         formatted_div_date, beta, pe_ratio, eps, earnings_quarterly_growth, formatted_market_cap,
                         fifty_two_week_low, fifty_two_week_high, year_target_price_est, highest_hist_price,
                         price_difference, suggested_entry_price, indicator
@@ -108,7 +109,7 @@ def stockInfoRequest(ticker):
 
 #  function appends stock information to a results array
 def stockResultsCompile(stock_name, symbol, sector, currency, open_price,
-                        current_price, previous_close_price, volume, div_rate, div_yield,
+                        current_price, previous_close_price, formatted_volume, div_rate, div_yield,
                         formatted_div_date, beta, pe_ratio, eps, earnings_quarterly_growth, formatted_market_cap,
                         fifty_two_week_low, fifty_two_week_high, year_target_price_est, highest_hist_price,
                         price_difference, suggested_entry_price, indicator):
@@ -122,7 +123,7 @@ def stockResultsCompile(stock_name, symbol, sector, currency, open_price,
                                   "Open Price": open_price,
                                   "52 Week Low": fifty_two_week_low,
                                   "52 Week High": fifty_two_week_high,
-                                  "Volume": volume,
+                                  "Volume": formatted_volume,
                                   "Market Cap": formatted_market_cap,
                                   "Beta": beta,
                                   "PE Ratio": pe_ratio,
