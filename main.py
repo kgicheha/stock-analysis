@@ -84,7 +84,7 @@ def stockResultsCompile(stock_name, symbol, sector, currency, open_price,
                         formatted_div_date, beta, pe_ratio, eps, earnings_quarterly_growth, formatted_market_cap,
                         fifty_two_week_low, fifty_two_week_high, year_target_price_est, highest_hist_price):
 
-
+    # used used compare where the current prices is vs the highest historical price
     price_difference = round(current_price - highest_hist_price ,2)
 
     # look into buying the stock when it drops below entry price
