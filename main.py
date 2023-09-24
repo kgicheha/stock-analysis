@@ -13,7 +13,6 @@ def stocksInList():
     for symbol in stockList:
         stockInfoRequest(symbol)
 
-
 # fetches data from yahoo finance
 def stockInfoRequest(ticker):
     current_stock = yf.Ticker(ticker)
@@ -28,7 +27,7 @@ def stockInfoRequest(ticker):
     previous_close_price = current_stock_info["previousClose"]
     volume = current_stock_info["volume"]
 
-    # dividend rate
+    # gets dividend rate
     try:
         div_rate = current_stock_info["dividendRate"]
     except KeyError:
