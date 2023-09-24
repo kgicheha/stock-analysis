@@ -23,6 +23,8 @@ def stockInfoRequest(stockName, ticker, targetPrice):
     current_stock = yf.Ticker(ticker)
     current_stock_info = current_stock.info
 
+    stock_name = current_stock_info["shortName"]
+    symbol = current_stock_info["symbol"]
     sector = current_stock_info["sector"]
     currency = current_stock_info["currency"]
     open_price = current_stock_info["open"]
@@ -48,8 +50,10 @@ def stockInfoRequest(stockName, ticker, targetPrice):
     fifty_two_week_low = current_stock_info["fiftyTwoWeekLow"]
     fifty_two_week_high = current_stock_info["fiftyTwoWeekHigh"]
     target_price = current_stock_info["targetMeanPrice"]
-    print(target_price)
 
+    stock_history = current_stock.history(period="max")
+    stock_highest_price = round(max(stock_history["High"]),2)
+    print(stock_highest_price)
 
     # stockResultsCompile(stockName, ticker, currentPrice, targetPrice,
     #                     beta, peRatio, dividendYield, yearEstimatePrice, marketCap)
