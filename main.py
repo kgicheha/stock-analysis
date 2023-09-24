@@ -1,5 +1,5 @@
-import requests
-from bs4 import BeautifulSoup
+import math
+import yfinance as yf
 import csv
 from stockList import stockList
 from datetime import date
@@ -7,8 +7,8 @@ from datetime import date
 stockFinancialResults = []
 
 # loops through watchlist and passes in stock to getSymbol function
-def stocksInWatchList():
-    for stock in stockWatchList:
+def stocksInList():
+    for stock in stockList:
         getStockInformation(stock)
 
 
@@ -20,29 +20,39 @@ def getStockInformation(stock):
 
 # web scrap from yahoo to get prices
 def stockInfoRequest(stockName, ticker, targetPrice):
+    current_stock = yf.Ticker(ticker)
+    current_stock_info = current_stock.info
 
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'}
-    url = f'https://finance.yahoo.com/quote/{ticker}'
-    response = requests.get(url, headers=headers)
+    sector = current_stock_info["sector"]
+    currency = current_stock_info["currency"]
+    open_price = current_stock_info["open"]
+    current_price = current_stock_info["currentPrice"]
+    previous_close_price = current_stock_info["previousClose"]
+    volume = current_stock_info["volume"]
+    div_rate = current_stock_info["dividendRate"]
+    div_yield = round((current_stock_info["dividendYield"]) * 100, 2)
 
-    soup = BeautifulSoup(response.text, 'html.parser')
+    div_date = current_stock_info["exDividendDate"]
+    formatted_div_date = date.fromtimestamp(div_date)
 
-    currentPrice = soup.find(
-        'fin-streamer', {'class': 'Fw(b) Fz(36px) Mb(-4px) D(ib)'})["value"]
-    beta = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
-                     'data-test': "BETA_5Y-value"}).get_text(strip=True)
-    peRatio = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
-                        'data-test': "PE_RATIO-value"}).get_text(strip=True)
-    dividendYield = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
-                              'data-test': "DIVIDEND_AND_YIELD-value"}).get_text(strip=True)
-    yearEstimatePrice = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
-                                  'data-test': "ONE_YEAR_TARGET_PRICE-value"}).get_text(strip=True)
-    marketCap = soup.find('td', {'class': "Ta(end) Fw(600) Lh(14px)",
-                          'data-test': "MARKET_CAP-value"}).get_text(strip=True)
+    beta = round(current_stock_info["beta"],2)
+    pe_ratio = round(current_stock_info["trailingPE"],2)
 
-    stockResultsCompile(stockName, ticker, currentPrice, targetPrice,
-                        beta, peRatio, dividendYield, yearEstimatePrice, marketCap)
+    market_cap = current_stock_info["marketCap"]
+    # formats market cap
+    millnames = ['',' Thousand',' Million',' Billion',' Trillion']
+    millidx = max(0,min(len(millnames)-1,
+                        int(math.floor(0 if market_cap == 0 else math.log10(abs(market_cap))/3))))
+    formatted_market_cap = '{:.0f}{}'.format(market_cap / 10**(3 * millidx), millnames[millidx])
+
+    fifty_two_week_low = current_stock_info["fiftyTwoWeekLow"]
+    fifty_two_week_high = current_stock_info["fiftyTwoWeekHigh"]
+    target_price = current_stock_info["targetMeanPrice"]
+    print(target_price)
+
+
+    # stockResultsCompile(stockName, ticker, currentPrice, targetPrice,
+    #                     beta, peRatio, dividendYield, yearEstimatePrice, marketCap)
 
 
 #  function appends stock information to a results array
@@ -89,9 +99,9 @@ def createCsvFile():
             writer.writerow(stock)
 
 
-stocksInWatchList()
+stocksInList()
 # print(stockFinancialResults)
-print("File has been successfully created!")
+# print("File has been successfully created!")
 
 
 # ADD CURRENT DATE AND TIME TO CSV FILE

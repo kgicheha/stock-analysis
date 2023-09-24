@@ -1,19 +1,23 @@
-stockWatchList = [{
+stockList = [{
     "Apple": {
-       "Ticker" : "AAPL",
-       "Target Price": 150.00
+        "Ticker": "AAPL",
+        "Target Price": 150.00
     },
-   #  "Microsoft": {
-   #     "Ticker" : "MSFT",
-   #     "Target Price": 320.00
-   #  },
-   #  "Amazon.com,Inc": {
-   #  "Ticker" : "AMZN",
-   #  "Target Price" : 100.00
-   #  },
-   #  "Alphabet Inc.": {
-   #  "Ticker" : "GOOG",
-   #  "Target Price" : 115.00
-   #  }
+    #  "Microsoft": {
+    #     "Ticker" : "MSFT",
+    #     "Target Price": 320.00
+    #  },
+    #  "Amazon.com,Inc": {
+    #  "Ticker" : "AMZN",
+    #  "Target Price" : 100.00
+    #  },
+    #  "Alphabet Inc.": {
+    #  "Ticker" : "GOOG",
+    #  "Target Price" : 115.00
+    #  }
 
 }]
+
+
+# {'address1': 'One Apple Park Way', 'city': 'Cupertino', 'state': 'CA', 'zip': '95014', 'country': 'United States', 'phone': '408 996 1010', 'website': 'https://www.apple.com', 'industry': 'Consumer Electronics', 'industryDisp': 'Consumer Electronics', 'sector': 'Technology', 'sectorDisp': 'Technology', 'longBusinessSummary': 'Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line of smartphones; Mac, a line of personal computers; iPad, a line of multi-purpose tablets; and wearables, home, and accessories comprising AirPods, Apple TV, Apple Watch, Beats products, and HomePod. It also provides AppleCare support and cloud services; and operates various platforms, including the App Store that allow customers to discover and download applications and digital content, such as books, music, video, games, and podcasts. In addition, the company offers various services, such as Apple Arcade, a game subscription service; Apple Fitness+, a personalized fitness service; Apple Music, which offers users a curated listening experience with on-demand radio stations; Apple News+, a subscription news and magazine service; Apple TV+, which offers exclusive original content; Apple Card, a co-branded credit card; and Apple Pay, a cashless payment service, as well as licenses its intellectual property. The company serves consumers, and small and mid-sized businesses; and the education, enterprise, and government markets. It distributes third-party applications for its products through the App Store. The company also sells its products through its retail and online stores, and direct sales force; and third-party cellular network carriers, wholesalers, retailers, and resellers. Apple Inc. was incorporated in 1977 and is headquartered in Cupertino, California.', 'fullTimeEmployees': 164000, 'companyOfficers': [{'maxAge': 1, 'name': 'Mr. Timothy D. Cook', 'age': 61, 'title': 'CEO & Director', 'yearBorn': 1961, 'fiscalYear': 2022, 'totalPay': 16425933, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Luca  Maestri', 'age': 59, 'title': 'CFO & Sr. VP', 'yearBorn': 1963, 'fiscalYear': 2022, 'totalPay': 5019783, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Jeffrey E. Williams', 'age': 58, 'title': 'Chief Operating Officer', 'yearBorn': 1964, 'fiscalYear': 2022, 'totalPay': 5018337, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Ms. Katherine L. Adams', 'age': 58, 'title': 'Sr. VP, Gen. Counsel & Sec.', 'yearBorn': 1964, 'fiscalYear': 2022, 'totalPay': 5015208, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': "Ms. Deirdre  O'Brien", 'age': 55, 'title': 'Sr. VP of Retail', 'yearBorn': 1967, 'fiscalYear': 2022, 'totalPay': 5019783, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Chris  Kondo', 'title': 'Sr. Director of Corp. Accounting', 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. James  Wilson', 'title': 'Chief Technology Officer', 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Ms. Mary  Demby', 'title': 'Chief Information Officer', 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Ms. Nancy  Paxton', 'title': 'Sr. Director of Investor Relations & Treasury', 'exercisedValue': 0, 'unexercisedValue': 0}, {
+#     'maxAge': 1, 'name': 'Mr. Greg  Joswiak', 'title': 'Sr. VP of Worldwide Marketing', 'exercisedValue': 0, 'unexercisedValue': 0}], 'auditRisk': 4, 'boardRisk': 1, 'compensationRisk': 5, 'shareHolderRightsRisk': 1, 'overallRisk': 1, 'governanceEpochDate': 1693526400, 'compensationAsOfEpochDate': 1672444800, 'maxAge': 86400, 'priceHint': 2, 'previousClose': 173.93, 'open': 174.67, 'dayLow': 174.055, 'dayHigh': 177.079, 'regularMarketPreviousClose': 173.93, 'regularMarketOpen': 174.67, 'regularMarketDayLow': 174.055, 'regularMarketDayHigh': 177.079, 'dividendRate': 0.96, 'dividendYield': 0.0055, 'exDividendDate': 1691712000, 'payoutRatio': 0.156, 'fiveYearAvgDividendYield': 0.86, 'beta': 1.274896, 'trailingPE': 29.278057, 'forwardPE': 28.237478, 'volume': 55110610, 'regularMarketVolume': 55110610, 'averageVolume': 57984325, 'averageVolume10days': 70981200, 'averageDailyVolume10Day': 70981200, 'bid': 174.93, 'ask': 175.1, 'bidSize': 900, 'askSize': 900, 'marketCap': 2732701515776, 'fiftyTwoWeekLow': 124.17, 'fiftyTwoWeekHigh': 198.23, 'priceToSalesTrailing12Months': 7.1176524, 'fiftyDayAverage': 183.7062, 'twoHundredDayAverage': 165.34515, 'trailingAnnualDividendRate': 0.93, 'trailingAnnualDividendYield': 0.005346979, 'currency': 'USD', 'enterpriseValue': 2766059864064, 'profitMargins': 0.24681, 'floatShares': 15616878002, 'sharesOutstanding': 15634199552, 'sharesShort': 102091714, 'sharesShortPriorMonth': 105460144, 'sharesShortPreviousMonthDate': 1690761600, 'dateShortInterest': 1693440000, 'sharesPercentSharesOut': 0.0064999997, 'heldPercentInsiders': 0.00071999995, 'heldPercentInstitutions': 0.61317, 'shortRatio': 1.8, 'shortPercentOfFloat': 0.0064999997, 'impliedSharesOutstanding': 15634199552, 'bookValue': 3.852, 'priceToBook': 45.376427, 'lastFiscalYearEnd': 1663977600, 'nextFiscalYearEnd': 1695513600, 'mostRecentQuarter': 1688169600, 'earningsQuarterlyGrowth': 0.023, 'netIncomeToCommon': 94760001536, 'trailingEps': 5.97, 'forwardEps': 6.19, 'pegRatio': 4.39, 'lastSplitFactor': '4:1', 'lastSplitDate': 1598832000, 'enterpriseToRevenue': 7.205, 'enterpriseToEbitda': 22.315, '52WeekChange': 0.15361142, 'SandP52WeekChange': 0.18466556, 'lastDividendValue': 0.24, 'lastDividendDate': 1691712000, 'exchange': 'NMS', 'quoteType': 'EQUITY', 'symbol': 'AAPL', 'underlyingSymbol': 'AAPL', 'shortName': 'Apple Inc.', 'longName': 'Apple Inc.', 'firstTradeDateEpochUtc': 345479400, 'timeZoneFullName': 'America/New_York', 'timeZoneShortName': 'EDT', 'uuid': '8b10e4ae-9eeb-3684-921a-9ab27e4d87aa', 'messageBoardId': 'finmb_24937', 'gmtOffSetMilliseconds': -14400000, 'currentPrice': 174.79, 'targetHighPrice': 225.29, 'targetLowPrice': 139.87, 'targetMeanPrice': 187.35, 'targetMedianPrice': 187.74, 'recommendationMean': 2.0, 'recommendationKey': 'buy', 'numberOfAnalystOpinions': 37, 'totalCash': 62482001920, 'totalCashPerShare': 3.996, 'ebitda': 123957002240, 'totalDebt': 109280002048, 'quickRatio': 0.814, 'currentRatio': 0.982, 'totalRevenue': 383932989440, 'debtToEquity': 181.305, 'revenuePerShare': 24.22, 'returnOnAssets': 0.20896, 'returnOnEquity': 1.60093, 'grossProfits': 170782000000, 'freeCashflow': 90680500224, 'operatingCashflow': 113071996928, 'earningsGrowth': 0.05, 'revenueGrowth': -0.014, 'grossMargins': 0.43449003, 'ebitdaMargins': 0.32286, 'operatingMargins': 0.29231, 'financialCurrency': 'USD', 'trailingPegRatio': 2.2154}
