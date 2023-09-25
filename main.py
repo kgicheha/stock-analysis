@@ -3,6 +3,7 @@ import yfinance as yf
 import csv
 from stockList import stockList
 from datetime import date
+import os, sys
 
 
 stockFinancialResults = []
@@ -168,9 +169,6 @@ def createCsvFile():
                       "Earnings Quarterly Growth(%)",
                       "Volume",
                       "Market Cap"
-
-
-
                       ]
         writer = csv.DictWriter(
             csvfile, fieldnames=fieldnames, extrasaction='ignore')
@@ -182,5 +180,7 @@ def createCsvFile():
             print("Successfully Added Stock Financial Data For",
                   stock["Symbol"])
 
+    # to automatically open file file once its created in read-only
+    fd = os.open(f"./{fileNameFormat}", os.O_RDWR)
 
 createCsvFile()
