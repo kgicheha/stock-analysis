@@ -14,11 +14,14 @@ class Stock:
 
     def getStockNews(self):
 
+        print(f"Fetching news for {self.ticker} ...")
+
         current_stock = yf.Ticker(self.ticker)
         current_stock_info = current_stock.info
 
         stock_name = current_stock_info["shortName"]
         stock_news = current_stock.news
+
 
         for news in stock_news:
             title = news["title"]
@@ -29,6 +32,8 @@ class Stock:
 
             self.stockNewsResultsCompiler(
                 stock_name, title, link, publisher, formatted_publish_date)
+
+        print(f"Sucessfully fetched the news {self.ticker}")
 
     def stockNewsResultsCompiler(self, stock_name, title, link, publisher, formatted_publish_date):
 

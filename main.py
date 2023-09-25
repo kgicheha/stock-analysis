@@ -17,7 +17,7 @@ class Stock:
     def stockInfoRequest(self):
 
         # used to know which stock didnt process.
-        print("Processing data for", self.ticker.upper(), "...")
+        print(f"Fetching data for {self.ticker} ...")
 
         current_stock = yf.Ticker(self.ticker)
 
@@ -98,6 +98,7 @@ class Stock:
                                  price_difference, suggested_entry_price, indicator
                                  )
 
+        print(f"Successfully Fetched data for {self.ticker}!")
     #  function appends stock information to a results array
 
     def stockResultsCompile(self, stock_name, symbol, sector, currency, open_price,
