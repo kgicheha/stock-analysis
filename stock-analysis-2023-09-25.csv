@@ -1,5 +1,5 @@
-﻿Stock Name,Symbol,Sector,Currency,Current Price,Previous Close Price,Open Price,52 Week Low,52 Week High,Volume,Market Cap,Beta,PE Ratio,EPS,Dividend Rate,Dividend Yield,Divididend Date,Earnings Quarterly Growth(%),1y Target Estimate,Suggested Entry Price,Current Price vs Historical Highest Price,Wait/Buy Now
-Apple Inc.,AAPL,Technology,USD,174.79,173.93,174.67,124.17,198.23,"56,682,928",3 Trillion,1.27,29.28,5.97,0.96,0.55,2023-08-10,2.3,199.58,148.47,-23.17,Wait To Buy
-Microsoft Corporation,MSFT,Technology,USD,317.01,319.53,321.32,213.43,366.78,"21,436,003",2 Trillion,0.9,32.75,9.68,3.0,0.94,2023-11-14,20.0,386.95,274.51,-49.0,Wait To Buy
-"Amazon.com, Inc.",AMZN,Consumer Cyclical,USD,129.12,129.33,131.11,81.43,145.86,"59,875,291",1 Trillion,1.24,107.6,1.2,0.0,0.0,N/A,N/A,170.37,141.49,-59.53,Buy Now
-Alphabet Inc.,GOOG,Communication Services,USD,131.25,131.36,131.68,83.45,139.93,"17,350,910",2 Trillion,1.06,28.47,4.61,0.0,0.0,N/A,14.8,142.3,114.07,-20.85,Wait To Buy
+﻿Stock Name,Symbol,Sector,Currency,Wait/Buy Now,Suggested Entry Price,Current Price,Previous Close Price,Open Price,52 Week Range,1y Target Estimate,All Time High Price,Current Price vs All Time High Price,Beta,PE Ratio,EPS,Dividend Rate,Dividend Yield,Divididend Date,Earnings Quarterly Growth(%),Volume,Market Cap
+Apple Inc.,AAPL,Technology,USD,Wait To Buy,148.47,174.67,174.79,173.93,124.17 - 198.23,199.58,197.96,-23.17,1.27,29.28,5.97,0.96,0.55,2023-08-10,2.3,"56,682,928",3 Trillion
+Microsoft Corporation,MSFT,Technology,USD,Wait To Buy,274.51,321.32,317.01,319.53,213.43 - 366.78,386.95,366.01,-49.0,0.9,32.75,9.68,3.0,0.94,2023-11-14,20.0,"21,436,003",2 Trillion
+"Amazon.com, Inc.",AMZN,Consumer Cyclical,USD,Buy Now,141.49,131.11,129.12,129.33,81.43 - 145.86,170.37,188.65,-59.53,1.24,107.6,1.2,0.0,0.0,N/A,N/A,"59,875,291",1 Trillion
+Alphabet Inc.,GOOG,Communication Services,USD,Wait To Buy,114.07,131.68,131.25,131.36,83.45 - 139.93,142.3,152.1,-20.85,1.06,28.47,4.61,0.0,0.0,N/A,14.8,"17,350,910",2 Trillion

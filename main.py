@@ -6,6 +6,8 @@ from datetime import date
 
 
 stockFinancialResults = []
+
+
 class Stock:
     def __init__(self, ticker):
         self.ticker = ticker
@@ -71,6 +73,7 @@ class Stock:
 
         fifty_two_week_low = current_stock_info["fiftyTwoWeekLow"]
         fifty_two_week_high = current_stock_info["fiftyTwoWeekHigh"]
+        fifty_two_week_range = f"{fifty_two_week_low} - {fifty_two_week_high}"
         year_target_price_est = current_stock_info["targetMeanPrice"]
 
         stock_history = current_stock.history(period="max")
@@ -88,10 +91,9 @@ class Stock:
         else:
             indicator = "Buy Now"
 
-        self.stockResultsCompile(stock_name, symbol, sector, currency, open_price,
-                                 current_price, previous_close_price, formatted_volume, div_rate, div_yield,
+        self.stockResultsCompile(stock_name, symbol, sector, currency, previous_close_price, open_price, current_price, formatted_volume, div_rate, div_yield,
                                  formatted_div_date, beta, pe_ratio, eps, earnings_quarterly_growth, formatted_market_cap,
-                                 fifty_two_week_low, fifty_two_week_high, year_target_price_est, highest_hist_price,
+                                 fifty_two_week_range, year_target_price_est, highest_hist_price,
                                  price_difference, suggested_entry_price, indicator
                                  )
 
@@ -100,32 +102,32 @@ class Stock:
     def stockResultsCompile(self, stock_name, symbol, sector, currency, open_price,
                             current_price, previous_close_price, formatted_volume, div_rate, div_yield,
                             formatted_div_date, beta, pe_ratio, eps, earnings_quarterly_growth, formatted_market_cap,
-                            fifty_two_week_low, fifty_two_week_high, year_target_price_est, highest_hist_price,
+                            fifty_two_week_range, year_target_price_est, highest_hist_price,
                             price_difference, suggested_entry_price, indicator):
 
         stockFinancialResults.append({"Stock Name": stock_name,
-                                           "Symbol": symbol,
-                                           "Sector": sector,
-                                           "Currency": currency,
-                                           "Current Price": current_price,
-                                           "Previous Close Price": previous_close_price,
-                                           "Open Price": open_price,
-                                           "52 Week Low": fifty_two_week_low,
-                                           "52 Week High": fifty_two_week_high,
-                                           "Volume": formatted_volume,
-                                           "Market Cap": formatted_market_cap,
-                                           "Beta": beta,
-                                           "PE Ratio": pe_ratio,
-                                           "EPS": eps,
-                                           "Dividend Rate": div_rate,
-                                           "Dividend Yield": div_yield,
-                                           "Divididend Date": formatted_div_date,
-                                           "Earnings Quarterly Growth(%)": earnings_quarterly_growth,
-                                           "1y Target Estimate": year_target_price_est,
-                                           "Suggested Entry Price": suggested_entry_price,
-                                           "Current Price vs Historical Highest Price": price_difference,
-                                           "Wait/Buy Now": indicator})
-
+                                      "Symbol": symbol,
+                                      "Sector": sector,
+                                      "Currency": currency,
+                                      "Wait/Buy Now": indicator,
+                                      "Suggested Entry Price": suggested_entry_price,
+                                      "Current Price": current_price,
+                                      "Previous Close Price": previous_close_price,
+                                      "Open Price": open_price,
+                                      "52 Week Range": fifty_two_week_range,
+                                      "1y Target Estimate": year_target_price_est,
+                                      "All Time High Price": highest_hist_price,
+                                      "Current Price vs All Time High Price": price_difference,
+                                      "Beta": beta,
+                                      "PE Ratio": pe_ratio,
+                                      "EPS": eps,
+                                      "Dividend Rate": div_rate,
+                                      "Dividend Yield": div_yield,
+                                      "Divididend Date": formatted_div_date,
+                                      "Earnings Quarterly Growth(%)": earnings_quarterly_growth,
+                                      "Volume": formatted_volume,
+                                      "Market Cap": formatted_market_cap,
+                                      })
 
  # loops through watchlist and passes in stock to stockInfoRequest function
 def stocksInList():
@@ -140,19 +142,23 @@ def stocksInList():
 
 stocksInList()
 
+
 def createCsvFile():
 
     today = str(date.today())
     fileNameFormat = "stock-analysis-" + today + ".csv"
 
     with open(f'{fileNameFormat}', mode='w', newline='', encoding="utf-8-sig") as csvfile:
-        fieldnames = ['Stock Name', 'Symbol', "Sector", "Currency", "Current Price",
+        fieldnames = ['Stock Name', 'Symbol', "Sector", "Currency",
+                      "Wait/Buy Now",
+                      "Suggested Entry Price",
+                      "Current Price",
                       "Previous Close Price",
                       "Open Price",
-                      "52 Week Low",
-                      "52 Week High",
-                      "Volume",
-                      "Market Cap",
+                      "52 Week Range",
+                      "1y Target Estimate",
+                      "All Time High Price",
+                      "Current Price vs All Time High Price",
                       "Beta",
                       "PE Ratio",
                       "EPS",
@@ -160,10 +166,11 @@ def createCsvFile():
                       "Dividend Yield",
                       "Divididend Date",
                       "Earnings Quarterly Growth(%)",
-                      "1y Target Estimate",
-                      "Suggested Entry Price",
-                      "Current Price vs Historical Highest Price",
-                      "Wait/Buy Now"
+                      "Volume",
+                      "Market Cap"
+
+
+
                       ]
         writer = csv.DictWriter(
             csvfile, fieldnames=fieldnames, extrasaction='ignore')
@@ -172,7 +179,8 @@ def createCsvFile():
         # prints out the data from the stock Financial Results
         for stock in stockFinancialResults:
             writer.writerow(stock)
-            print("Successfully Added Stock Financial Data For", stock["Symbol"])
+            print("Successfully Added Stock Financial Data For",
+                  stock["Symbol"])
 
 
 createCsvFile()
