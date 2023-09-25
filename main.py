@@ -135,7 +135,7 @@ def stocksInList():
             processing_stock = Stock(symbol)
             processing_stock.stockInfoRequest()
     else:
-        print("Please add stock tickers to the stockList.py file")
+        print("Please add stock tickers to the stockList array in the stockList.py file")
 
 
 stocksInList()
