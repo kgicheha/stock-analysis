@@ -8,6 +8,6 @@ stockList = ["aapl", "MSFT", "AMZN", "GOOG"]
 stocksToCompare =["AAPL", "MSFT", "AMZN"]
 
 # use in the get_news.py file to get news for the stocks
-stockNewsList = ["AAPL", "MSFT"]
+stockNewsList = ["AAPL", "MSFT", "GOOG"]
 
 
