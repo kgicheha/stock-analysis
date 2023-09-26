@@ -1,10 +1,12 @@
 
 Project Description:
-    These Python scripts empower users to make informed decisions in stock investments through automated technical analysis.
+    These Python scripts empower users to make informed decisions in stock investments by automatating the technical analysis workflow.
 
-    Performing manual technical analysis on stocks can be a time-consuming and repetitive task.
+    If done manually, Performing technical analysis on stocks can be a time-consuming and repetitive task.
 
-    These scripts significantly reduce the time required for technical analysis by automating the research process, aggregating real-time stock data and news for multiple stocks, and delivering the results in a convenient CSV file format within seconds.
+    These scripts significantly reduce the time required for performing technical analysis by automating the steps of aggregating stock data and news, and delivering the results in a CSV file format which is very useful when working other programs such as Miscrosoft Excel.
+
+    The scripts can be used to gather either or multiple stocks within a few seconds.
 
     The Yahoo Finance library is leveraged to aggregate real-time market data and news.
 
