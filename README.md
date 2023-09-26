@@ -36,7 +36,7 @@ Description of each File:
     comparison.py Script
         Use this script to compare the stock prices for multiple stocks.
         To specify the stocks you want to compare, add the stock ticker to the stocksToCompare array in the 'stockList.py' file
-
+        When run successfully, the chart will automatically open.
 
 **Disclaimer**:
     Please do your own research and consult with a financial advisor before making any investment.
