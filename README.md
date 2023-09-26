@@ -1,13 +1,12 @@
 
 Project Description:
-    These Python scripts empower users to make informed decisions regarding stock investments through technical analysis.
+    These Python scripts empower users to make informed decisions in stock investments through automated technical analysis.
 
-    Performing techincal analysis on stocks is very tedious and reduntant if done manually.
+    Performing manual technical analysis on stocks can be a time-consuming and repetitive task.
 
-    These scripts helps to reduce the amount of time it takes to perform a technical analysis by eliminating a lot of the manual steps  needs to take when researching stock market data and news.
+    These scripts significantly reduce the time required for technical analysis by automating the research process, aggregating real-time stock data and news for multiple stocks, and delivering the results in a convenient CSV file format within seconds.
 
-    Instead of researching for the data one stock at a time, the scripts aggregates real-time stock data and news of multiple stocks then outputs the results in a csv file format, within a few seconds.
-    Once the files are successuly created, the user can quickly perform their analysis.
+    With the files readily available, users can swiftly conduct their analysis, saving valuable time.
 
 
 How To Run The Script:
