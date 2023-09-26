@@ -6,6 +6,8 @@ Project Description:
 
     These scripts significantly reduce the time required for technical analysis by automating the research process, aggregating real-time stock data and news for multiple stocks, and delivering the results in a convenient CSV file format within seconds.
 
+    The Yahoo Finance library is leveraged to aggregate real-time market data and news.
+
     With the files readily available, users can swiftly conduct their analysis, saving valuable time.
 
 How To Run the Scripts:
@@ -16,19 +18,24 @@ How To Run the Scripts:
 Description of each File:
 
     financials.py Script
-        Leverages the Yahoo Finance library to aggregate real-time market data for the specified stock, such as current price, beta, earnings per share
-        To specify which stock your want to research, add the stock ticker to the stockList array in the 'stockList.py' file
+        To specify which stock you want to research, add the stock ticker to the stockList array in the 'stockList.py' file
         Once sucessfully run, a cvs file called 'stock-analysis-{current date}' will downloaded in the folder.
         Open the file to view the data.
 
     get_news.py Script
-        Leverages the Yahoo Finance library to aggregate news on specified stocks.
         To specify the stock you want the news for, add the stock ticker to the stockNewsList array in the 'stockList.py' file
         Once sucessfully run, a cvs file called 'stock-news-{current date}' will downloaded in the folder.
         Open the file to view the news.
 
-    create
+    create_chart.py Script
+        Utilizes the Matplotlib library to create visually engaging price and volume charts for enhanced data visualization.
+        When running this script, you will be prompted to type in the stock ticker you want the chart for.
+        Please be sure to type in the correct ticker.
+        When run successfully, the chart will automatically open.
 
+    comparison.py Script
+        Use this script to compare the stock prices for multiple stocks.
+        To specify the stocks you want to compare, add the stock ticker to the stocksToCompare array in the 'stockList.py' file
 
 
 **Disclaimer**:
