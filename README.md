@@ -1,16 +1,14 @@
 
 Project Description:
-    This script allows you to create a watchlist of stocks you're interested in investing and price you want the stock to get to before making an investment in the company.
-    The idea came about from my interest in investing, however I didnt want to check on each individual stock daily to see whether the current price is below my desired entry price.
-    Having to check each stock individually is tedius and very redundant.
-    So I decided to automate this process using a Python script.
-    Now all I have to do is to add the company's that I'm interested in and the target price that I would like the stock to get to before making an investment.
-    The script using Beautifulsoup library to web scrape data of the companies that I have on my watchlist and then creates a csv file with the key information,
-    including whether I should invest based on if the stock price has reached my desired entry price.
+    These Python scripts empower users to make informed decisions regarding stock investments through technical analysis.
 
+    Performing techincal analysis on stocks is very tedious and reduntant if done manually.
 
-Issue This Project Helps To Solve:
-    Rather than researching each stock at a time to see whether the stock price has reached your desired buy in price. This script helps you to automate that.
+    These scripts helps to reduce the amount of time it takes to perform a technical analysis by eliminating a lot of the manual steps  needs to take when researching stock market data and news.
+
+    Instead of researching for the data one stock at a time, the scripts aggregates real-time stock data and news of multiple stocks then outputs the results in a csv file format, within a few seconds.
+    Once the files are successuly created, the user can quickly perform their analysis.
+
 
 How To Run The Script:
 
