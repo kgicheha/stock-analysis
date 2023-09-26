@@ -8,38 +8,31 @@ Project Description:
 
     With the files readily available, users can swiftly conduct their analysis, saving valuable time.
 
+How To Run the Scripts:
+1) Download the repository to your local machine.
+2) Go to the folder where the files are stored in your local machine
+3) run python3 <<name of file>>
 
-How To Run The Script:
+Description of each File:
 
-1. Clone the repository down to your local computer
+    financials.py Script
+        Leverages the Yahoo Finance library to aggregate real-time market data for the specified stock, such as current price, beta, earnings per share
+        To specify which stock your want to research, add the stock ticker to the stockList array in the 'stockList.py' file
+        Once sucessfully run, a cvs file called 'stock-analysis-{current date}' will downloaded in the folder.
+        Open the file to view the data.
 
-2. Change the User-agent that's in the stockInfoRequest function (in the getStockPrices.py file) to your own computer:
-    You can find this information by googling "User-Agent"
-    Copy and past the result to the inside the stockInfoRequest function
+    get_news.py Script
+        Leverages the Yahoo Finance library to aggregate news on specified stocks.
+        To specify the stock you want the news for, add the stock ticker to the stockNewsList array in the 'stockList.py' file
+        Once sucessfully run, a cvs file called 'stock-news-{current date}' will downloaded in the folder.
+        Open the file to view the news.
 
-3. Add the company stocks that you're interested in investing in to the stockWatchList.py file
-    Use the samples that are in the files to format the stocks
-    Set the price that you want the stock to drop to so that you invest in it
-        To get a target entry price, you can simply research a company's all-time high stock price
-        Then calculate a target price that's below that all-time high price.
+    create
 
-4. Save the files and then Run the getStockPrices.py file in the command line using following:
-        python3 getStockPrices.py
-
-5. If everything ran sucessfully:
-    You will see a new csv file in the folder that has the results.
-    The results will feature:
-        1. Key company data, like the current stock price
-        2. How far the current stock price is from your'e desired entry price.
-        3. Indicator on whether you should buy the stock or wait, based on if the current stock price is equal to or below you're target entry price.
-
-
-Python libraries used for this project
-    1. Beautiful Soup is a Python library for pulling data out of HTML and XML files
 
 
 **Disclaimer**:
     Please do your own research and consult with a financial advisor before making any investment.
-    This is only a personal project that I'm using the learn about webscraping
+    This is only a personal project that I'm using the learn about automation and data analysis using python
 
 
