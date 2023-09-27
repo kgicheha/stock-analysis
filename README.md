@@ -1,8 +1,8 @@
 
 Project Description:
-    These Python scripts empower users to make informed decisions in stock investments by automatating the technical analysis workflow.
+    These Python scripts empower users to perform swift technical analysis through workflow automation.
 
-    If done manually, Performing technical analysis on stocks can be a time-consuming and repetitive task.
+    If done manually, performing technical analysis on stocks can be a time-consuming and repetitive task.
 
     These scripts significantly reduce the time required for performing technical analysis by automating the steps of aggregating stock data and news, and delivering the results in a CSV file format which is very useful when working other programs such as Miscrosoft Excel.
 
