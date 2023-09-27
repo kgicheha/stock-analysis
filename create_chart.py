@@ -50,3 +50,4 @@ class CreateStockChart:
 user_input = input("Enter stock ticker: ")
 stock_chart = CreateStockChart(user_input)
 stock_chart.fetchData()
+print(f"Successfully fetched data for {user_input}")
